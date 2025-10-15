@@ -5,12 +5,12 @@
     font-family: 'Questrial';
     font-style: normal;
     font-weight: 400;
-    src: url('./../assets/questrial/questrial-v19-latin-regular.eot');
-    src: url('./../assets/questrial/questrial-v19-latin-regular.eot?#iefix') format('embedded-opentype'),
-        url('./../assets/questrial/questrial-v19-latin-regular.woff2') format('woff2'),
-        url('./../assets/questrial/questrial-v19-latin-regular.woff') format('woff'),
-        url('./../assets/questrial/questrial-v19-latin-regular.ttf') format('truetype'),
-        url('./../assets/questrial/questrial-v19-latin-regular.svg#Questrial') format('svg');
+    src: url('./../assets/fonts/questrial/questrial-v19-latin-regular.eot');
+    src: url('./../assets/fonts/questrial/questrial-v19-latin-regular.eot?#iefix') format('embedded-opentype'),
+        url('./../assets/fonts/questrial/questrial-v19-latin-regular.woff2') format('woff2'),
+        url('./../assets/fonts/questrial/questrial-v19-latin-regular.woff') format('woff'),
+        url('./../assets/fonts/questrial/questrial-v19-latin-regular.ttf') format('truetype'),
+        url('./../assets/fonts/questrial/questrial-v19-latin-regular.svg#Questrial') format('svg');
 }
 
 /* *** Font Face for "Magneta" *** */

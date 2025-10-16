@@ -82,3 +82,85 @@ window.addEventListener('scroll', () => {
     }
 
 });
+
+// Slideshow + AutoSlide
+
+let currentSlide = 1;
+let totalSlideCount = document.querySelectorAll('#slideshow .slides > div').length;
+let slideProcessOngoing = false;
+let timeoutAutoSlide = 10;
+let timeoutCount = 0;
+
+function slideAuto(destination, automated) {
+
+    destination = parseInt(destination);
+    if (destination < 1 || destination > totalSlideCount) return;
+    if (slideProcessOngoing && automated) return;
+    if (slideProcessOngoing && !automated) {
+        setTimeout(() => slideAuto(destination, false), 300);
+        return;
+    }
+    slideProcessOngoing = true;
+    if (!automated) {
+        timeoutAutoSlide = 15;
+        timeoutCount = 0;
+    } else {
+        timeoutAutoSlide = 10;
+    }
+    if (destination !== currentSlide) {
+        const currentSlideElmnt = document.querySelector(`#slideshow .slides > div:nth-of-type(${currentSlide})`);
+        const destinationSlideElmnt = document.querySelector(`#slideshow .slides > div:nth-of-type(${destination})`);
+        const currentBtn = document.querySelector(`#slideshow .controls > button:nth-of-type(${currentSlide})`);
+        const destinationBtn = document.querySelector(`#slideshow .controls > button:nth-of-type(${destination})`);
+        if (currentSlideElmnt && destinationSlideElmnt && currentBtn && destinationBtn) {
+            currentSlideElmnt.style.animation = 'fadeOut .5s both';
+            destinationSlideElmnt.style.animation = 'fadeIn .5s both';
+            currentBtn.classList.remove('active');
+            destinationBtn.classList.add('active');
+            currentSlide = destination;
+        }
+    }
+    setTimeout(() => {
+        slideProcessOngoing = false;
+    }, 500);
+
+}
+
+function autoSlide() {
+
+    if (timeoutCount >= timeoutAutoSlide) {
+        timeoutCount = 0;
+        let nextSlide = currentSlide + 1;
+        if (totalSlideCount == currentSlide) {
+            nextSlide = 1;
+        }
+        slideAuto(nextSlide, true);
+    } else {
+        timeoutCount++;
+    }
+
+}
+
+let autoSlideAutomation = setInterval(autoSlide, 1000);
+
+function slideTo(destination) {
+
+    let currentSlideElmnt = document.querySelector(`#slideshow .slides > div:nth-of-type(${currentSlide})`);
+    currentSlideElmnt.style.animation = 'fadeOut .5s both';
+
+    let destinationSlideElmnt = document.querySelector(`#slideshow .slides > div:nth-of-type(${destination})`);
+    destinationSlideElmnt.style.animation = 'fadeIn .5s both';
+
+    setTimeout(() => {
+        currentSlideElmnt.style.zIndex = 0;
+        destinationSlideElmnt.style.zIndex = 1;
+    }, 250);
+
+    document.querySelector(`#slideshow .controls > button:nth-of-type(${currentSlide})`).classList.remove('active');
+    document.querySelector(`#slideshow .controls > button:nth-of-type(${destination})`).classList.add('active');
+
+    currentSlide = destination;
+    timeoutAutoSlide = 15;
+    timeoutCount = 0;
+
+}

@@ -13,6 +13,7 @@ html {
     --clr-background: #fff;
     --clr-font: #1f1f1f;
     --clr-font-on-primary: #fff;
+    --clr-font-on-dark: #fff;
 
     --clr-surface-1: #f3f2f3;
     --clr-surface-1-transparency: #f3f2f3c0;
@@ -20,6 +21,10 @@ html {
     --clr-surface-3: #1c1b1c;
     --clr-surface-primary: #f9f6fc;
     --clr-surface-primary-transparency: #f9f6fcd2;
+
+    --clr-box-on-img-transparency-light: #f1f1f133;
+    --clr-box-on-img-transparency-border: #e7e7e765;
+    --clr-box-on-img-transparency: #f1f1f15d;
 
     --font-primary: "Questrial", Helvetica, Arial, sans-serif;
     --font-highlight: "Magneta", Helvetica, Arial, sans-serif;
@@ -52,6 +57,10 @@ body {
 h1,
 h2 {
     font-family: var(--font-highlight);
+}
+
+p {
+    line-height: 135%;
 }
 
 button {
@@ -102,12 +111,39 @@ button {
 
 }
 
+@keyframes fadeIn {
+
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+@keyframes fadeOut {
+
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
+}
+
+/* *** Index *** */
+
 /* Navigation */
 
 #navigation {
     width: 100%;
     height: 150px;
     position: fixed;
+    top: 0;
     z-index: 98;
     display: flex;
     flex-direction: column;
@@ -221,6 +257,7 @@ button {
     width: 100%;
     height: 70px;
     position: fixed;
+    top: 0;
     z-index: 98;
     background-color: var(--clr-surface-1);
     display: none;
@@ -430,6 +467,282 @@ button {
 
     #mobile-navigation .visible-container a img {
         height: 30px
+    }
+
+}
+
+/* Slideshow */
+
+#slideshow {
+    width: 100%;
+    height: calc(100vh - 150px);
+    position: relative;
+    display: block;
+    margin-top: 150px;
+}
+
+#slideshow .slides {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#slideshow .slides>div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    z-index: 0;
+}
+
+#slideshow .slides>div:first-of-type {
+    opacity: 1;
+    z-index: 1;
+}
+
+#slideshow .slides .image-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+#slideshow .slides .image-container img {
+    width: auto;
+    height: auto;
+    min-height: 100%;
+    z-index: 1;
+}
+
+#slideshow .slides .image-container img:last-of-type {
+    display: none;
+}
+
+#slideshow .slides .filter {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.603) 100%);
+    z-index: 3;
+}
+
+#slideshow .slides .info {
+    position: absolute;
+    bottom: 3rem;
+    left: 2.5rem;
+    color: var(--clr-font-on-dark);
+    z-index: 4;
+}
+
+#slideshow .slides .info h1 {
+    font-size: 2.25rem;
+    margin-bottom: .75rem;
+}
+
+#slideshow .slides .info p {
+    max-width: 66.6%;
+}
+
+#slideshow .controls {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    z-index: 5;
+}
+
+#slideshow .controls button {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--clr-box-on-img-transparency-border);
+    border-radius: 50%;
+    background-color: var(--clr-box-on-img-transparency-light);
+    backdrop-filter: blur(20px);
+    transition: .25;
+}
+
+#slideshow .controls button.active {
+    background-color: var(--clr-box-on-img-transparency);
+}
+
+@media (max-width: 1155px) {
+
+    #slideshow .slides .info p {
+        max-width: 75%;
+    }
+
+}
+
+@media (max-width: 1050px) {
+
+    #slideshow .slides .info p {
+        max-width: calc(100% - 2.5rem);
+    }
+
+}
+
+@media (max-width: 1024px) {
+
+    #slideshow .slides .image-container img {
+        transform: scale(0.75);
+    }
+
+}
+
+@media (max-width: 900px) {
+
+    #slideshow {
+        width: 100%;
+        height: auto;
+        display: block;
+        position: relative;
+        margin-top: 150px;
+    }
+
+    #slideshow .slides {
+        width: 100%;
+        height: auto;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #slideshow .slides>div {
+        width: 100%;
+        height: auto;
+        position: absolute;
+    }
+
+    #slideshow .slides>div .image-container {
+        width: 100%;
+        height: auto;
+    }
+
+    #slideshow .slides>div .image-container img {
+        width: 100%;
+        height: auto;
+        display: none;
+        position: relative;
+        transform: scale(1);
+    }
+
+    #slideshow .slides>div .image-container img:last-of-type {
+        display: block;
+    }
+
+    #slideshow .slides>div:first-of-type {
+        position: relative;
+    }
+
+}
+
+@media (max-width: 730px) {
+
+    #slideshow .slides .info h1 {
+        font-size: 1.75rem;
+    }
+
+}
+
+@media (max-width: 685px) {
+
+    #slideshow {
+        margin-top: 70px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    #slideshow .slides .info {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #slideshow .slides .info h1 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: .3rem;
+    }
+
+
+    #slideshow .slides .info p {
+        font-size: .9rem;
+        text-align: center;
+    }
+
+    #slideshow .slides .filter {
+        display: none;
+    }
+
+    #slideshow .slides .image-container img {
+        filter: brightness(60%);
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    #slideshow .slides .info {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    #slideshow .slides .info p {
+        font-size: .8rem;
+        line-height: 110%;
+    }
+
+    #slideshow .slides .info h1 {
+        font-size: 1.35rem;
+    }
+
+    #slideshow .controls>button {
+        width: 15px;
+        height: 15px;
+    }
+
+    #slideshow .controls {
+        gap: .35rem;
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    #slideshow .slides .info h1 {
+        margin-bottom: 0;
+        font-size: 1.15rem;
+    }
+
+    #slideshow .slides .info p {
+        font-size: .75rem;
+    }
+
+    #slideshow .controls button {
+        width: 12.5px;
+        height: 12.5px;
     }
 
 }

@@ -164,3 +164,37 @@ function slideTo(destination) {
     timeoutCount = 0;
 
 }
+
+// Subject Overview Reorder
+
+let defaultSubjectOverviewStructure = document.querySelector('#subject-overview').innerHTML;
+
+function reorderSubjectOverview() {
+
+    if (window.innerWidth <= 1024) {
+
+        document.querySelectorAll('#subject-overview > div').forEach((elmnt, index) => {
+
+            let primaryAside = elmnt.querySelector('aside.primary').innerHTML;
+            let secondaryAside = elmnt.querySelector('aside.secondary').innerHTML;
+
+            let newContent = `
+                <aside class="primary">
+                    ${primaryAside}
+                </aside>
+                <aside class="secondary">
+                    ${secondaryAside}
+                </aside>
+            `;
+
+            elmnt.innerHTML = newContent;
+        });
+
+    } else {
+        document.querySelector('#subject-overview').innerHTML = defaultSubjectOverviewStructure;
+    }
+}
+
+reorderSubjectOverview();
+
+window.addEventListener('resize', reorderSubjectOverview);

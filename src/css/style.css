@@ -34,7 +34,7 @@ html {
 
 body {
     width: 100%;
-    height: 100%;
+    height: 500%;
     margin: 0;
     background-color: var(--clr-background);
     color: var(--clr-font);
@@ -56,7 +56,8 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3 {
     font-family: var(--font-highlight);
 }
 
@@ -145,6 +146,21 @@ button.secondary-btn .material-icon {
     margin-right: .25rem;
     margin-left: .35rem;
     color: var(--clr-font-light);
+}
+
+.logo-style {
+    width: auto;
+    height: 45px;
+    border-radius: 50%;
+    outline: 1px solid var(--clr-primary);
+    box-shadow: 0 0 5px var(--clr-primary-light);
+    transition: .25s;
+}
+
+.logo-style:hover {
+    transform: scale(1.05);
+    outline: 1.5px solid var(--clr-primary);
+    box-shadow: 0 0 7.5px var(--clr-primary);
 }
 
 @keyframes buttonBounceFontSize {
@@ -261,21 +277,6 @@ main>section {
     padding-top: 2rem;
 }
 
-#navigation .top-container>a img {
-    width: auto;
-    height: 45px;
-    border-radius: 50%;
-    outline: 1px solid var(--clr-primary);
-    box-shadow: 0 0 5px var(--clr-primary-light);
-    transition: .25s;
-}
-
-#navigation .top-container>a:hover>img {
-    transform: scale(1.05);
-    outline: 1.5px solid var(--clr-primary);
-    box-shadow: 0 0 7.5px var(--clr-primary);
-}
-
 #navigation .top-container h1 {
     text-align: center;
     font-size: 2rem;
@@ -377,16 +378,7 @@ main>section {
 }
 
 #mobile-navigation .visible-container a img {
-    width: auto;
     height: 37.5px;
-    border-radius: 50%;
-    outline: 1px solid var(--clr-primary);
-    box-shadow: 0 0 5px var(--clr-primary-light);
-    transition: .25s;
-}
-
-#mobile-navigation .visible-container a:hover>img {
-    transform: scale(1.05);
 }
 
 #mobile-navigation .visible-container h1 {
@@ -955,6 +947,177 @@ main>section {
 
     #subject-overview .primary h1 {
         font-size: 1.2rem;
+    }
+
+}
+
+/* Join */
+
+#join {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 3rem;
+    padding-bottom: 3rem;
+    background-color: var(--clr-surface-primary);
+    border-top: 2.5px solid var(--clr-surface-1);
+}
+
+#join .vote {
+    width: 45px;
+    height: 45px;
+    transform: translateY(-45px);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--clr-primary);
+    color: var(--clr-font-on-primary);
+    font-size: 1.5rem;
+    border-radius: 50%;
+    box-shadow: 0 0 5px var(--clr-primary);
+}
+
+#join h1 {
+    font-size: 2rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    padding-left: .75rem;
+    padding-right: .75rem;
+    text-align: center;
+}
+
+#join h1 strong {
+    font-family: var(--font-highlight);
+    color: var(--clr-primary);
+}
+
+#join .subtitle {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: .5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#join .subtitle>img {
+    height: 30px;
+}
+
+#join .subtitle>h3 {
+    font-size: 1.1rem;
+}
+
+#join p {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#join .docs {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: .75rem;
+}
+
+#join a {
+    width: 175px;
+    height: 150px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--clr-surface-1-transparency);
+    border: 2px solid var(--clr-surface-2);
+    box-shadow: 0 0 5px var(--clr-surface-2);
+    border-radius: 25px;
+    text-decoration: none;
+    color: var(--clr-font);
+    margin-top: .75rem;
+    transition: .25s;
+}
+
+#join a:hover {
+    transform: scale(1.025);
+    background-color: var(--clr-primary);
+    border: 2px solid var(--clr-primary);
+    box-shadow: 0 0 50px var(--clr-primary-light);
+    outline: 5px solid var(--clr-primary-light);
+    box-sizing: 0 0 15px var(--clr-primary);
+    color: var(--clr-font-on-primary);
+}
+
+#join a:hover>.material-icon {
+    color: var(--clr-font-on-primary);
+}
+
+#join a>.material-icon {
+    font-size: 2rem;
+    transition: .25s;
+}
+
+#join a h2 {
+    font-size: 1rem;
+    text-align: center;
+    margin-top: .75rem;
+}
+
+@media (max-width: 555px) {
+
+    #join h1 {
+        font-size: 1.75rem;
+    }
+
+    #join a h2 {
+        font-size: 1.05rem;
+    }
+
+    #join .subtitle img {
+        height: 27.5px;
+    }
+
+    #join p {
+        width: 90%;
+        margin-top: .25rem;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    #join h1 {
+        font-size: 1.5rem;
+    }
+
+}
+
+@media (max-width: 430px) {
+
+    #join .docs {
+        flex-direction: column;
+    }
+
+    #join .docs a {
+        width: 75%;
+        height: 135px;
+    }
+
+    #join h1 {
+        font-size: 1.35rem;
+        margin-bottom: .75rem;
+    }
+
+    #join .subtitle h3 {
+        font-size: 1rem;
     }
 
 }

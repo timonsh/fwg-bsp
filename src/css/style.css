@@ -34,7 +34,7 @@ html {
 
 body {
     width: 100%;
-    height: 500%;
+    height: 100%;
     margin: 0;
     background-color: var(--clr-background);
     color: var(--clr-font);
@@ -1118,6 +1118,102 @@ main>section {
 
     #join .subtitle h3 {
         font-size: 1rem;
+    }
+
+}
+
+/* Footer */
+
+#footer {
+    width: 100%;
+    height: 285px;
+    display: block;
+    position: relative;
+    background-color: var(--clr-surface-1);
+}
+
+#footer>a {
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    left: 2.5rem;
+    top: 2.5rem;
+    border-radius: 50%;
+}
+
+#footer>a img {
+    width: auto;
+    height: 50px;
+}
+
+#footer div {
+    position: absolute;
+    top: 1.725rem;
+    left: 7.5rem;
+}
+
+#footer h1 {
+    font-size: 1.35rem;
+    margin-bottom: 0;
+    padding-right: 2rem;
+}
+
+#footer ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#footer li a {
+    display: flex;
+    align-items: center;
+    height: 25px;
+    text-decoration: none;
+    color: var(--clr-font);
+    transition: .25s;
+}
+
+#footer li a:hover {
+    font-weight: 700;
+}
+
+@media (max-width: 656px) {
+
+    #footer div {
+        top: 1.1rem;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    #footer>a {
+        left: 1.25rem;
+    }
+
+    #footer a img {
+        height: 40px;
+    }
+
+    #footer div {
+        top: 1.75rem;
+        left: 5.25rem;
+    }
+
+    #footer h1 {
+        font-size: 1.15rem;
+    }
+
+    #footer li a {
+        height: 21px;
+    }
+
+}
+
+@media (max-width: 350px) {
+
+    #footer h1 {
+        padding-right: 1rem;
+        font-size: 1.05rem;
     }
 
 }

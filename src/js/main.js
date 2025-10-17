@@ -1,6 +1,8 @@
 "use strict";
 
+
 // Button Bounce Effect
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -20,7 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+
 // Mobile Nav Toggle
+
 
 let isNavExtended = false;
 
@@ -42,7 +46,9 @@ function toggleMobileNav() {
 
 }
 
+
 // Nav Scroll
+
 
 let hasScrolledDown = false;
 let hasTriggeredTop = true;
@@ -79,11 +85,14 @@ window.addEventListener('scroll', () => {
             e.style.height = '';
         });
         document.querySelector('#navigation .bottom-container a.active').style.borderBottom = '';
+        document.querySelector('#header').style.height = '';
     }
 
 });
 
+
 // Slideshow + AutoSlide
+
 
 let currentSlide = 1;
 let totalSlideCount = document.querySelectorAll('#slideshow .slides > div').length;
@@ -165,8 +174,11 @@ function slideTo(destination) {
 
 }
 
+
 // Subject Overview Reorder
 
+
+// TODO: !!!!!!!
 let defaultSubjectOverviewStructure = document.querySelector('#subject-overview').innerHTML;
 
 function reorderSubjectOverview() {

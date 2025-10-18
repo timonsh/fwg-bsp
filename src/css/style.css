@@ -15,6 +15,7 @@ html {
     /* Colors */
 
     --clr-primary: #3d54e5;
+    --clr-primary-transparency: #3d53e51c;
     --clr-primary-light: #8fa0f2;
     --clr-secondary: #fc991e;
     --clr-tertiary: #3bcaa7;
@@ -35,6 +36,11 @@ html {
     --clr-box-on-img-transparency-light: #f1f1f133;
     --clr-box-on-img-transparency-border: #e7e7e765;
     --clr-box-on-img-transparency: #f1f1f15d;
+
+    --clr-fwg: #50468e;
+    --clr-spd: #e40613;
+    --clr-cdu: #52b7c1;
+    --clr-gruene: #1ea12d;
 
     /* Fonts */
 
@@ -668,6 +674,32 @@ button.secondary-btn .material-icon {
 
 .is-bouncing {
     animation: buttonBounceFontSize .25s;
+}
+
+a.email {
+    width: 85px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .35rem;
+    border-radius: 7.5px;
+    background-color: var(--clr-primary);
+    color: var(--clr-font-on-primary);
+    text-decoration: none;
+    font-size: .9rem;
+    transition: .25s;
+}
+
+a.email:hover {
+    transform: scale(1.05);
+    outline: 2.5px solid var(--clr-primary-light);
+    box-shadow: 0 0 10px var(--clr-primary);
+}
+
+a.email span {
+    color: var(--clr-font-on-primary);
+    font-size: .9rem;
 }
 
 /* *** Animations *** */
@@ -1421,32 +1453,6 @@ button.secondary-btn .material-icon {
     line-height: 120%;
 }
 
-#executive .persons a {
-    width: 85px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: .35rem;
-    border-radius: 7.5px;
-    background-color: var(--clr-primary);
-    color: var(--clr-font-on-primary);
-    text-decoration: none;
-    font-size: .9rem;
-    transition: .25s;
-}
-
-#executive .persons a:hover {
-    transform: scale(1.05);
-    outline: 2.5px solid var(--clr-primary-light);
-    box-shadow: 0 0 10px var(--clr-primary);
-}
-
-#executive .persons a span {
-    color: var(--clr-font-on-primary);
-    font-size: .9rem;
-}
-
 @media (max-width: 740px) {
 
     #executive .persons>div {
@@ -1473,6 +1479,239 @@ button.secondary-btn .material-icon {
     #executive .persons>div {
         width: 100%;
         height: 275px;
+    }
+
+}
+
+
+/* **************************************************************************** */
+/* **************************************************************************** */
+/* **************************************************************************** */
+/* *************************** POLITISCHE-ARBEIT.HTML ************************* */
+/* **************************************************************************** */
+/* **************************************************************************** */
+/* **************************************************************************** */
+
+
+#composition .parties {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: .25rem;
+    padding-left: .15rem;
+}
+
+#composition .parties>div {
+    width: 450px;
+    height: 50px;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+    background-color: var(--clr-surface-primary);
+    border: 2px solid var(--clr-surface-1);
+    border-radius: 10px;
+    transition: .25s;
+}
+
+#composition .parties img {
+    width: auto;
+    height: 17.5px;
+    box-shadow: 0 0 7.5px var(--clr-font-light);
+    margin-left: 1rem;
+}
+
+#composition .parties h3 {
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    margin-left: .75rem;
+}
+
+#composition .parties span {
+    font-size: .9rem;
+    right: 1rem;
+    position: absolute;
+}
+
+#composition .fwg img {
+    border-radius: 50%;
+    height: 30px;
+}
+
+#composition .parties div:hover {
+    transform: scale(1.0175);
+}
+
+#composition .spd:hover {
+    border: 2px solid var(--clr-spd);
+    box-shadow: 0 0 5px solid var(--clr-spd);
+}
+
+#composition .cdu:hover {
+    border: 2px solid var(--clr-cdu);
+    box-shadow: 0 0 5px solid var(--clr-cdu);
+
+}
+
+#composition .gruene:hover {
+    border: 2px solid var(--clr-gruene);
+    box-shadow: 0 0 5px solid var(--clr-gruene);
+
+}
+
+#composition .fwg:hover {
+    border: 2px solid var(--clr-fwg);
+    box-shadow: 0 0 5px solid var(--clr-fwg);
+
+}
+
+#composition .fwg {
+    border: 2px solid var(--clr-primary) !important;
+    background-color: var(--clr-primary-transparency) !important;
+}
+
+@media (max-width: 600px) {
+
+    #composition .parties>div {
+        width: 100%;
+    }
+
+}
+
+#work .persons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: .75rem;
+    margin-top: 2.25rem;
+}
+
+#work .persons>div {
+    width: 375px;
+    height: auto;
+    min-height: 300px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: .75rem;
+    background-color: var(--clr-surface-primary);
+    border: 2px solid var(--clr-surface-1);
+    border-radius: 17.5px;
+    transition: .35s;
+}
+
+#work .persons>div * {
+    transition: .35s;
+}
+
+#work .persons>div>img {
+    width: auto;
+    height: 85px;
+    border: 3px solid var(--clr-primary);
+    border-radius: 50%;
+    margin-left: 1.75rem;
+    margin-top: 1.75rem;
+}
+
+#work .persons>div>div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 1.25rem;
+    margin-bottom: .5rem;
+}
+
+#work>.persons>div>div>h3 {
+    font-size: 1.2rem;
+    margin-bottom: .35rem;
+}
+
+#work .persons>div>div>div {
+    height: auto;
+    min-height: 32.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: .25rem;
+    padding: .5rem .75rem .5rem .75rem;
+    background-color: var(--clr-font-on-primary);
+    border: 1.5px solid var(--clr-surface-1);
+    border-radius: 10px;
+    box-shadow: 0 0 3.5px var(--clr-surface-1);
+    font-size: .8rem;
+}
+
+#work .persons>div>div>span {
+    display: block;
+    margin-bottom: .75rem;
+    text-transform: uppercase;
+    font-size: .8rem;
+    color: var(--clr-font-light);
+}
+
+#work .persons>div>div>a {
+    margin-top: 1rem;
+    margin-left: .1rem;
+}
+
+#work .persons>div:hover {
+    transform: scale(1.025);
+}
+
+#work .persons>div:hover>img {
+    transform: scale(1.1);
+}
+
+#work .persons>div:hover>div>span {
+    color: var(--clr-font);
+}
+
+#work .persons>div>div>div:hover {
+    border: 1.5px solid var(--clr-primary);
+}
+
+@media (max-width: 908px) {
+
+    #work .persons>div {
+        width: 90%;
+    }
+
+}
+
+@media (max-width: 780px) {
+
+    #work .persons>div {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 455px) {
+
+    #work .persons>div {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #work .persons>div>div {
+        justify-content: center;
+        align-items: center;
+    }
+
+    #work .persons>div>img {
+        width: 120px;
+        height: 120px;
     }
 
 }

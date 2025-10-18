@@ -831,7 +831,12 @@ button.secondary-btn .material-icon {
         width: 100%;
     }
 
+    .ps-system .primary {
+        order: 1;
+    }
+
     .ps-system .secondary {
+        order: 2;
         justify-content: center;
         align-items: center;
         flex-direction: column;

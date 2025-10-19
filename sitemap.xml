@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Main Pages -->
+    <url>
+        <loc>http://freie-waehler-gleichen.de/index.html</loc>
+        <lastmod>2025-10-19</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>http://freie-waehler-gleichen.de/über-uns.html</loc>
+        <lastmod>2025-10-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://freie-waehler-gleichen.de/politische-arbeit.html</loc>
+        <lastmod>2025-10-19</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://freie-waehler-gleichen.de/programm.html</loc>
+        <lastmod>2025-10-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://freie-waehler-gleichen.de/mitmachen.html</loc>
+        <lastmod>2025-10-19</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://freie-waehler-gleichen.de/impressum.html</loc>
+        <lastmod>2025-10-19</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <!-- Assets -->
+    <url>
+        <loc>http://freie-waehler-gleichen.de/src/assets/docs/Beitrittserklärung%20-%20FWG.pdf</loc>
+        <lastmod>2025-10-19</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>http://freie-waehler-gleichen.de/src/assets/docs/Beitragsliste%20-%20FWG.pdf</loc>
+        <lastmod>2025-10-19</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+
+    <!-- Webmanifest -->
+    <url>
+        <loc>http://freie-waehler-gleichen.de/site.webmanifest</loc>
+        <lastmod>2025-10-19</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+</urlset>

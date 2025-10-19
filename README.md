@@ -5,7 +5,7 @@
 [![JavaScript](https://img.shields.io/badge/Code-JavaScript-yellow)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Homepage](https://img.shields.io/badge/Website-FWG--BsP-green)](http://freie-waehler-gleichen.de)
 
-![Website Preview](https://timonsh.github.io/fwg-bsp/src/assets/img/index.html-preview.png)
+![Website Preview](./src/assets/img/index.html-preview.png)
 
 ## Über das Projekt
 

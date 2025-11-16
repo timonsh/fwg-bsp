@@ -1,6 +1,17 @@
 "use strict";
 
 
+// Meta
+
+
+const meta = {
+    id: 'fwg-bsp',
+    version: 'v1.0-beta',
+    name: 'Freie Wähler Gleichen - Bürger statt Partei e.V.',
+    creator: 'webbytestudio',
+};
+
+
 // Button Bounce Effect
 
 

@@ -1650,18 +1650,17 @@ a.email span {
 }
 
 #work .persons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 375px);
     gap: .75rem;
     margin-top: 2.25rem;
+    justify-content: center;
 }
 
 #work .persons>div {
-    width: 375px;
-    height: auto;
+    width: 100%;
+    max-width: 375px;
+    height: 100%;
     min-height: 300px;
     position: relative;
     display: flex;

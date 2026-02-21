@@ -1,8 +1,6 @@
 "use strict";
 
-
 // Meta
-
 
 const meta = {
     id: 'fwg-bsp',
@@ -11,9 +9,7 @@ const meta = {
     creator: 'webbytestudio',
 };
 
-
 // Button Bounce Effect
-
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -33,9 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
 // Mobile Nav Toggle
-
 
 let isNavExtended = false;
 
@@ -57,9 +51,7 @@ function toggleMobileNav() {
 
 }
 
-
 // Nav Scroll
-
 
 let hasScrolledDown = false;
 let hasTriggeredTop = true;
@@ -101,9 +93,7 @@ window.addEventListener('scroll', () => {
 
 });
 
-
 // Slideshow + AutoSlide
-
 
 let currentSlide = 1;
 let totalSlideCount = document.querySelectorAll('#slideshow .slides > div').length;

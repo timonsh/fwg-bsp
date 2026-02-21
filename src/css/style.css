@@ -41,6 +41,7 @@ html {
     --clr-spd: #e40613;
     --clr-cdu: #52b7c1;
     --clr-gruene: #1ea12d;
+    --clr-fraktionslos: #7d7d80;
 
     /* Fonts */
 
@@ -1627,6 +1628,12 @@ a.email span {
 #composition .gruene:hover {
     border: 2px solid var(--clr-gruene);
     box-shadow: 0 0 5px solid var(--clr-gruene);
+
+}
+
+#composition .fraktionslos:hover {
+    border: 2px solid var(--clr-fraktionslos);
+    box-shadow: 0 0 5px solid var(--clr-fraktionslos);
 
 }
 

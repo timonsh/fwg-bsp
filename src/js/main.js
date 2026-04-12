@@ -4,7 +4,7 @@
 
 const meta = {
     id: 'fwg-bsp',
-    version: 'v1.0-beta',
+    version: 'v1.0',
     name: 'Freie Wähler Gleichen - Bürger statt Partei e.V.',
     creator: 'webbytestudio',
 };

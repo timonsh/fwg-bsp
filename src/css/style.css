@@ -142,6 +142,7 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 7.5px;
+    text-decoration: none;
     transition: .25s;
 }
 
@@ -156,6 +157,17 @@ body {
 }
 
 #navigation .top-container div a:hover>img {
+    transform: scale(1.05);
+}
+
+#navigation .top-container div a .material-icon,
+#mobile-navigation .hidden-container div a .material-icon {
+    font-size: 24px;
+    color: var(--clr-font);
+    transition: .25s;
+}
+
+#navigation .top-container div a:hover>.material-icon {
     transform: scale(1.05);
 }
 
@@ -301,6 +313,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    gap: .175rem;
 }
 
 #mobile-navigation .hidden-container div a {
@@ -460,7 +473,7 @@ main>section>h2,
     height: 50px;
 }
 
-#footer div {
+#footer > div {
     position: absolute;
     top: 1.725rem;
     left: 7.5rem;
@@ -498,14 +511,21 @@ main>section>h2,
     transform: translateX(4px);
 }
 
+#footer .socials {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: .35rem;
+}
+
 #footer .social {
     width: 34px;
     height: 34px;
-    margin-top: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 7.5px;
+    text-decoration: none;
     transition: .25s;
 }
 
@@ -518,8 +538,13 @@ main>section>h2,
     height: 60%;
 }
 
+#footer .social .material-icon {
+    font-size: 24px;
+    color: var(--clr-font);
+}
+
 @media (max-width: 656px) {
-    #footer div {
+    #footer > div {
         top: 1.1rem;
     }
 }
@@ -533,7 +558,7 @@ main>section>h2,
         height: 40px;
     }
 
-    #footer div {
+    #footer > div {
         top: 1.75rem;
         left: 5.25rem;
     }
@@ -723,6 +748,12 @@ main>section>h2,
 
 #cookie-request.hide {
     animation: cookieBannerFadeOut 0.5s cubic-bezier(0.7, 0, 0.84, 0) forwards;
+}
+
+/* Nach der Entscheidung setzt cookie-agent.js das hidden-Attribut. Nötig,
+   weil die ID-Regel oben mit display: flex die UA-Regel [hidden] überstimmt. */
+#cookie-request[hidden] {
+    display: none;
 }
 
 

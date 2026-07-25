@@ -1,1 +1,5 @@
 .vscode/settings.json
+
+# Claude Code — nur lokal, nicht zu GitHub pushen
+CLAUDE.md
+.claude/

@@ -195,6 +195,7 @@ body {
     display: block;
     color: var(--clr-font);
     font-size: 1.1rem;
+    white-space: nowrap;
     text-decoration: none;
     transition: .25s;
 }
@@ -343,6 +344,10 @@ body {
         font-size: 1.6rem;
     }
 
+    #navigation .bottom-container ul {
+        gap: 1.5rem;
+    }
+
 }
 
 @media (max-width: 835px) {
@@ -358,6 +363,11 @@ body {
     #navigation .top-container div a {
         width: 27.5px;
         height: 27.5px;
+    }
+
+    #navigation .bottom-container ul {
+        gap: 1.1rem;
+        padding-right: 1rem;
     }
 
     #navigation .bottom-container a {
@@ -379,6 +389,15 @@ body {
     #navigation .top-container div a {
         width: 25.5px;
         height: 25.5px;
+    }
+
+    #navigation .bottom-container ul {
+        gap: .75rem;
+        padding-right: 0;
+    }
+
+    #navigation .bottom-container a {
+        font-size: .95rem;
     }
 
 }
@@ -452,7 +471,7 @@ main>section>h2,
 
 #footer {
     width: 100%;
-    height: 285px;
+    height: 315px;
     display: block;
     position: relative;
     background-color: var(--clr-surface-1);
@@ -1111,6 +1130,172 @@ a.email span {
     box-shadow: 0 0 7.5px var(--clr-primary);
 }
 
+/* *** Lightbox *** */
+/* Markup und Bedienung siehe src/js/lightbox.js — der Viewer wird zur Laufzeit gebaut. */
+
+[data-lightbox] {
+    cursor: zoom-in;
+}
+
+#lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: rgba(28, 27, 28, .85);
+    backdrop-filter: blur(18px);
+    animation: fadeIn .25s;
+}
+
+#lightbox[hidden] {
+    display: none;
+}
+
+/* Der Dialog selbst bekommt den Fokus, soll ihn aber nicht anzeigen */
+#lightbox:focus {
+    outline: none;
+    border: none;
+}
+
+body.lightbox-open {
+    overflow: hidden;
+}
+
+#lightbox .lightbox-stage {
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: .85rem;
+    margin: 0;
+    padding: 0 4.5rem;
+}
+
+#lightbox .lightbox-stage img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: calc(100vh - 9rem);
+    display: block;
+    border-radius: 15px;
+    background-color: var(--clr-background);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, .45);
+}
+
+#lightbox figcaption {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .75rem;
+    color: var(--clr-font-on-dark);
+    font-size: .95rem;
+    text-align: center;
+}
+
+#lightbox .counter {
+    flex-shrink: 0;
+    padding: .15rem .65rem;
+    border-radius: 999px;
+    background-color: var(--clr-box-on-img-transparency-light);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+#lightbox .counter:empty {
+    display: none;
+}
+
+#lightbox .lightbox-btn {
+    width: 46px;
+    height: 46px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--clr-box-on-img-transparency);
+    backdrop-filter: blur(10px);
+    transition: .25s;
+}
+
+#lightbox .lightbox-btn[hidden] {
+    display: none;
+}
+
+#lightbox .lightbox-btn:hover {
+    background-color: var(--clr-background);
+}
+
+#lightbox .lightbox-btn .material-icon {
+    font-size: 28px;
+    color: var(--clr-font);
+}
+
+#lightbox .lightbox-btn.close {
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+#lightbox .lightbox-btn.prev,
+#lightbox .lightbox-btn.next {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#lightbox .lightbox-btn.prev:hover,
+#lightbox .lightbox-btn.next:hover {
+    transform: translateY(-50%) scale(1.05);
+}
+
+#lightbox .lightbox-btn.prev {
+    left: 1.5rem;
+}
+
+#lightbox .lightbox-btn.next {
+    right: 1.5rem;
+}
+
+@media (max-width: 700px) {
+
+    #lightbox {
+        padding: 1rem;
+    }
+
+    /* Die Pfeile liegen auf schmalen Schirmen über dem Bild, damit es die volle Breite behält */
+    #lightbox .lightbox-stage {
+        padding: 0;
+    }
+
+    #lightbox .lightbox-stage img {
+        max-height: calc(100vh - 7rem);
+    }
+
+    #lightbox .lightbox-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    #lightbox .lightbox-btn.close {
+        top: .75rem;
+        right: .75rem;
+    }
+
+    #lightbox .lightbox-btn.prev {
+        left: .75rem;
+    }
+
+    #lightbox .lightbox-btn.next {
+        right: .75rem;
+    }
+
+}
+
 /* *** ps-System (primary secondary) *** */
 
 .ps-system>div {
@@ -1401,6 +1586,117 @@ a.email span {
 /* **************************************************************************** */
 /* **************************************************************************** */
 /* **************************************************************************** */
+
+/* *** Flyer-Highlight *** */
+
+#flyer-highlight {
+    width: 100%;
+    height: auto;
+    padding: 1.5rem 5% 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+#flyer-highlight .flyer-tag {
+    padding: .3rem .8rem;
+    border-radius: 999px;
+    background-color: var(--clr-primary-transparency);
+    color: var(--clr-primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    font-size: .7rem;
+}
+
+#flyer-highlight h2 {
+    font-size: 2rem;
+    margin: .85rem 0 .35rem;
+}
+
+#flyer-highlight>p {
+    max-width: 700px;
+    margin: 0;
+    color: var(--clr-font-light);
+}
+
+#flyer-highlight .flyer-pages {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+#flyer-highlight .flyer-pages a {
+    display: block;
+    border-radius: 22px;
+}
+
+#flyer-highlight .flyer-pages img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 22px;
+    border: 2px solid var(--clr-surface-2);
+    box-shadow: 0 20px 45px rgba(31, 31, 31, 0.12);
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+
+#flyer-highlight .flyer-pages a:hover img,
+#flyer-highlight .flyer-pages a:focus-visible img {
+    transform: translateY(-6px);
+    border-color: var(--clr-primary-light);
+    box-shadow: 0 25px 55px rgba(61, 84, 229, 0.2);
+}
+
+#flyer-highlight .flyer-download {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    margin-top: 2rem;
+    padding: .7rem 1.5rem;
+    border-radius: 999px;
+    background-color: var(--clr-primary);
+    color: var(--clr-font-on-primary);
+    text-decoration: none;
+    font-weight: 700;
+    transition: .25s;
+}
+
+#flyer-highlight .flyer-download:hover {
+    transform: scale(1.05);
+    outline: 2.5px solid var(--clr-primary-light);
+    box-shadow: 0 0 10px var(--clr-primary);
+}
+
+#flyer-highlight .flyer-download .material-icon {
+    color: var(--clr-font-on-primary);
+    font-size: 1.25rem;
+}
+
+@media (max-width: 700px) {
+
+    #flyer-highlight h2 {
+        font-size: 1.6rem;
+    }
+
+    #flyer-highlight .flyer-pages {
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    #flyer-highlight .flyer-pages img {
+        border-radius: 15px;
+    }
+
+}
+
+/* *** News-Übersicht *** */
 
 #news-overview {
     width: 100%;
@@ -2324,4 +2620,103 @@ a.email span {
     display: inline-flex;
     margin-right: .5rem;
     margin-bottom: .5rem;
+}
+
+
+/* **************************************************************************** */
+/* **************************************************************************** */
+/* **************************************************************************** */
+/* ******************************* KONTAKT.HTML ******************************* */
+/* **************************************************************************** */
+/* **************************************************************************** */
+/* **************************************************************************** */
+
+
+#contact {
+    max-width: 800px;
+}
+
+#contact p {
+    line-height: 1.6;
+}
+
+#contact .contact-card {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: .35rem;
+    margin: 2rem 0;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border-radius: 28px;
+    background-color: var(--clr-background);
+    border: 2px solid var(--clr-surface-2);
+    box-shadow: 0 20px 45px rgba(31, 31, 31, 0.08);
+    color: var(--clr-font);
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+
+#contact .contact-card:hover,
+#contact .contact-card:focus-visible {
+    transform: translateY(-6px);
+    border-color: var(--clr-primary-light);
+    box-shadow: 0 25px 55px rgba(61, 84, 229, 0.2);
+}
+
+#contact .contact-card>.material-icon {
+    font-size: 48px;
+    margin-bottom: .5rem;
+    color: var(--clr-primary);
+}
+
+#contact .contact-card h3 {
+    margin: 0;
+    font-size: 1.15rem;
+}
+
+#contact .contact-mail {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    margin-top: .35rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--clr-primary);
+    word-break: break-word;
+}
+
+#contact .contact-mail .logo-style {
+    height: 30px;
+    flex-shrink: 0;
+}
+
+#contact .contact-card:hover .logo-style {
+    outline: 1.5px solid var(--clr-primary);
+    box-shadow: 0 0 7.5px var(--clr-primary);
+}
+
+/* Unterstreichung nur auf dem Text, nicht auf dem Logo daneben */
+#contact .contact-card:hover .contact-mail>span {
+    text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+
+    #contact .contact-card {
+        padding: 1.5rem 1rem;
+    }
+
+    #contact .contact-mail {
+        font-size: 1.1rem;
+    }
+
+    #contact .contact-mail .logo-style {
+        height: 26px;
+    }
+
 }

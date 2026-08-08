@@ -29,6 +29,79 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+// Scroll Reveal
+//
+// Blendet Inhaltsblöcke beim Hereinscrollen sanft ein. Die .reveal-Klasse wird
+// bewusst erst hier per JS gesetzt: ohne JavaScript (oder ohne
+// IntersectionObserver) bleibt die Seite dadurch vollständig sichtbar.
+
+(() => {
+
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    // Grobe und feine Ebenen gemischt — welche gewinnt, entscheidet der Filter
+    // unten. Die Slideshow bleibt außen vor, sie bringt eigene Animationen mit.
+    const SELECTORS = [
+        'main > header.main-headline',
+        'main > section > *',
+        '.ps-system > div',
+        '.persons > div',
+        '.news-grid > *',
+        '.flyer-pages > *'
+    ].join(', ');
+
+    const candidates = Array.from(document.querySelectorAll(SELECTORS))
+        .filter(el => !el.closest('#slideshow'));
+
+    // Enthält ein Kandidat einen anderen, gewinnt die feinere Ebene — so wird
+    // z. B. jede Zeile der .ps-system einzeln statt der ganze Block animiert.
+    const targets = candidates.filter(el =>
+        !candidates.some(other => other !== el && el.contains(other))
+    );
+
+    if (!targets.length) return;
+
+    // Leichter Versatz innerhalb einer Gruppe, damit Kacheln nacheinander kommen.
+    const groups = new Map();
+
+    targets.forEach(el => {
+        const siblings = groups.get(el.parentElement) || [];
+        siblings.push(el);
+        groups.set(el.parentElement, siblings);
+    });
+
+    groups.forEach(siblings => siblings.forEach((el, index) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = `${Math.min(index, 5) * 70}ms`;
+    }));
+
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (!entry.isIntersecting) return;
+
+            const el = entry.target;
+            el.classList.add('is-visible');
+            observer.unobserve(el);
+
+            // Nach dem Einblenden alle Spuren entfernen: die .reveal-Transition
+            // gilt per !important und würde sonst die eigenen Hover-Effekte der
+            // Elemente dauerhaft überschreiben.
+            setTimeout(() => {
+                el.classList.remove('reveal', 'is-visible');
+                el.style.transitionDelay = '';
+            }, 1200);
+
+        });
+
+    }, { rootMargin: '0px 0px -60px 0px' });
+
+    targets.forEach(el => observer.observe(el));
+
+})();
+
 // Mobile Nav Toggle
 
 let isNavExtended = false;

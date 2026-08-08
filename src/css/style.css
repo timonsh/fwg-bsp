@@ -785,6 +785,44 @@ main>section>h2,
 /* **************************************************************************** */
 
 
+/* *** Scroll-Effekte *** */
+
+/* Die .reveal-Klasse wird ausschließlich per JS gesetzt (siehe src/js/main.js).
+   Ohne JavaScript bleibt dadurch alles sichtbar. */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* !important, weil einzelne Blöcke (z. B. #news-overview .news-tile) per
+   ID-Spezifität eine eigene transition ohne opacity setzen und das Einblenden
+   sonst hart aufpoppt. Das JS entfernt die Klasse nach dem Einblenden wieder,
+   damit die Hover-Transitions der Elemente unangetastet bleiben. */
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .7s cubic-bezier(.22, .61, .36, 1), transform .7s cubic-bezier(.22, .61, .36, 1) !important;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+}
+
 /* *** Texts *** */
 
 h1,
@@ -2458,97 +2496,211 @@ body.lightbox-open {
 /* **************************************************************************** */
 
 
-#composition .parties {
+#composition .composition-layout {
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
+    align-items: center;
+    flex-direction: row;
+    gap: 2.5rem;
     margin-top: .25rem;
+}
+
+/* Die Liste hat kompakte Zeilen fester Höhe und wird neben dem höheren Foto
+   vertikal zentriert. */
+#composition .parties {
+    --accent: var(--clr-fraktionslos);
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    flex: 1 1 450px;
+    max-width: 620px;
     padding-left: .15rem;
 }
 
+#composition .composition-figure {
+    flex: 0 0 320px;
+    margin: 0;
+}
+
+#composition .composition-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 2px solid var(--clr-surface-2);
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(31, 31, 31, 0.08);
+}
+
+#composition .composition-figure figcaption {
+    margin-top: .6rem;
+    font-size: .85rem;
+    line-height: 1.5;
+    color: var(--clr-font-light);
+    text-align: center;
+}
+
+/* Jede Zeile führt ihre Parteifarbe in --accent; daraus speisen sich der
+   Rahmen beim Hover. Der Vorgabewert steht bewusst auf .parties und wird
+   vererbt — so überschreiben ihn die Parteiklassen unabhängig von der
+   Spezifität. */
 #composition .parties>div {
-    width: 450px;
-    height: 50px;
+    width: 100%;
+    flex: 0 0 auto;
+    height: 62px;
     position: relative;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
-    margin-top: .25rem;
-    margin-bottom: .25rem;
+    margin-top: .28rem;
+    margin-bottom: .28rem;
+    padding-left: 1.1rem;
+    padding-right: 1rem;
+    overflow: hidden;
     background-color: var(--clr-surface-primary);
     border: 2px solid var(--clr-surface-1);
-    border-radius: 10px;
-    transition: .25s;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(31, 31, 31, .04);
+    transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+
+#composition .spd {
+    --accent: var(--clr-spd);
+}
+
+#composition .cdu {
+    --accent: var(--clr-cdu);
+}
+
+#composition .gruene {
+    --accent: var(--clr-gruene);
+}
+
+#composition .fraktionslos {
+    --accent: var(--clr-fraktionslos);
 }
 
 #composition .parties img {
     width: auto;
-    height: 17.5px;
-    box-shadow: 0 0 7.5px var(--clr-font-light);
-    margin-left: 1rem;
+    height: 34px;
+    padding: 5px;
+    background-color: var(--clr-background);
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(31, 31, 31, .12);
 }
 
 #composition .parties h3 {
     font-size: 1rem;
     font-family: var(--font-primary);
-    margin-left: .75rem;
+    margin-left: .9rem;
+    margin-right: .6rem;
+    min-width: 0;
+    line-height: 1.25;
 }
 
+/* Im Flex-Fluss statt absolut positioniert — so kann der Parteiname auch auf
+   schmalen Displays nicht unter die Plakette laufen. */
 #composition .parties span {
-    font-size: .9rem;
-    right: 1rem;
-    position: absolute;
+    font-size: .85rem;
+    flex: 0 0 auto;
+    margin-left: auto;
+    padding: .3rem .85rem;
+    background-color: var(--clr-background);
+    border: 1px solid var(--clr-surface-2);
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+#composition .parties>div:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 20px rgba(31, 31, 31, .09);
+}
+
+/* Eigene Fraktion deutlich hervorgehoben: farbiger Rahmen in der Markenfarbe,
+   größeres Logo, gefüllte Sitz-Plakette und ein dauerhafter leichter Lift.
+   Selektor bewusst als .parties>.fwg — sonst gewinnt die border-/background-/
+   box-shadow-Kurzschreibweise von .parties>div per höherer Spezifität. */
+#composition .parties>.fwg {
+    --accent: var(--clr-primary);
+    background-color: var(--clr-primary-transparency);
+    border-color: var(--clr-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 9px 22px rgba(61, 84, 229, .18);
 }
 
 #composition .fwg img {
+    height: 40px;
+    padding: 0;
     border-radius: 50%;
-    height: 30px;
+    box-shadow: 0 2px 8px rgba(61, 84, 229, .3);
 }
 
-#composition .parties div:hover {
-    transform: scale(1.0175);
+#composition .fwg h3 {
+    color: var(--clr-primary);
+    letter-spacing: .02em;
 }
 
-#composition .spd:hover {
-    border: 2px solid var(--clr-spd);
-    box-shadow: 0 0 5px solid var(--clr-spd);
+#composition .fwg span {
+    background-color: var(--clr-primary);
+    border-color: var(--clr-primary);
+    color: var(--clr-font-on-primary);
 }
 
-#composition .cdu:hover {
-    border: 2px solid var(--clr-cdu);
-    box-shadow: 0 0 5px solid var(--clr-cdu);
+#composition .parties>.fwg:hover {
+    transform: translateY(-6px);
+    border-color: var(--clr-primary);
+    box-shadow: 0 14px 30px rgba(61, 84, 229, .26);
+}
+
+@media (max-width: 900px) {
+
+    #composition .composition-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.75rem;
+    }
+
+    #composition .composition-figure {
+        flex: 0 1 auto;
+        width: 100%;
+        max-width: 450px;
+    }
+
+    #composition .parties {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 450px;
+    }
 
 }
 
-#composition .gruene:hover {
-    border: 2px solid var(--clr-gruene);
-    box-shadow: 0 0 5px solid var(--clr-gruene);
-
-}
-
-#composition .fraktionslos:hover {
-    border: 2px solid var(--clr-fraktionslos);
-    box-shadow: 0 0 5px solid var(--clr-fraktionslos);
-
-}
-
-#composition .fwg:hover {
-    border: 2px solid var(--clr-fwg);
-    box-shadow: 0 0 5px solid var(--clr-fwg);
-
-}
-
-#composition .fwg {
-    border: 2px solid var(--clr-primary) !important;
-    background-color: var(--clr-primary-transparency) !important;
-}
-
+/* Auf schmalen Displays kompakter, damit der Parteiname nicht unter die
+   Sitz-Plakette läuft. */
 @media (max-width: 600px) {
 
     #composition .parties>div {
-        width: 100%;
+        padding-left: .9rem;
+        padding-right: .75rem;
+    }
+
+    #composition .parties img {
+        height: 32px;
+    }
+
+    #composition .fwg img {
+        height: 38px;
+    }
+
+    #composition .parties h3 {
+        font-size: .95rem;
+        margin-left: .7rem;
+    }
+
+    #composition .parties span {
+        font-size: .8rem;
+        padding: .25rem .7rem;
     }
 
 }

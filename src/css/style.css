@@ -2540,6 +2540,28 @@ body.lightbox-open {
     text-align: center;
 }
 
+/* Telefonnummer des Ortsbürgermeisters als eigene Zeile in der
+   Bildunterschrift. */
+#composition .composition-phone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .3rem;
+    margin-top: .25rem;
+    color: var(--clr-primary);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+#composition .composition-phone .material-icon {
+    font-size: 1rem;
+}
+
+/* Nur die Nummer unterstreichen, nicht das Icon. */
+#composition .composition-phone:hover span:not(.material-icon) {
+    text-decoration: underline;
+}
+
 /* Jede Zeile führt ihre Parteifarbe in --accent; daraus speisen sich der
    Rahmen beim Hover. Der Vorgabewert steht bewusst auf .parties und wird
    vererbt — so überschreiben ihn die Parteiklassen unabhängig von der

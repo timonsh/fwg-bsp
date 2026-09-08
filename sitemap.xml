@@ -4,7 +4,7 @@
     <!-- Main Pages -->
     <url>
         <loc>https://freiewaehlergleichen.de</loc>
-        <lastmod>2026-04-12</lastmod>
+        <lastmod>2026-09-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -40,13 +40,13 @@
     </url>
     <url>
         <loc>https://freiewaehlergleichen.de/programm.html</loc>
-        <lastmod>2026-04-12</lastmod>
+        <lastmod>2026-09-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://freiewaehlergleichen.de/mitmachen.html</loc>
-        <lastmod>2026-04-12</lastmod>
+        <lastmod>2026-09-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>

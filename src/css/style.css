@@ -44,6 +44,7 @@ html {
     --clr-afd: #00a2de;
     --clr-fdp: #edde05;
     --clr-linke: #ff0000;
+    --clr-bsw: #7d254f;
     --clr-fraktionslos: #7d7d80;
 
     /* Fonts */
@@ -1859,6 +1860,15 @@ body.lightbox-open {
     opacity: .65;
 }
 
+/* Wappen oder Logo statt Foto — gleiche Fläche wie der Platzhalter, aber voll deckend und größer */
+
+#news-overview .news-media.placeholder.emblem img,
+#news-overview .news-tile:hover .news-media.placeholder.emblem img,
+#news-overview .news-tile:focus-visible .news-media.placeholder.emblem img {
+    height: 76%;
+    opacity: 1;
+}
+
 #news-overview .news-tile-top {
     display: flex;
     justify-content: space-between;
@@ -1982,6 +1992,107 @@ body.lightbox-open {
     line-height: 1.5;
     color: var(--clr-font-light);
     text-align: center;
+}
+
+/* Wappen oder Logo im Artikel — klein und ohne Bildrahmen */
+
+#news-article .article-figure.emblem {
+    max-width: 130px;
+}
+
+#news-article .article-figure.emblem img {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Wahlergebnis als Balkenliste. Jede Zeile führt ihre Parteifarbe in --accent
+   und ihren Stimmenanteil in Prozent in --share (Inline-Style im HTML). Der
+   Balken ist auf 40 % skaliert, damit auch kleine Anteile sichtbar bleiben. */
+
+#news-article .election-results {
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+}
+
+#news-article .election-results li {
+    --accent: var(--clr-fraktionslos);
+    display: flex;
+    align-items: center;
+    gap: .9rem;
+    padding: .6rem 1rem;
+    background-color: var(--clr-surface-primary);
+    border: 2px solid var(--clr-surface-1);
+    border-radius: 14px;
+}
+
+#news-article .election-results .spd {
+    --accent: var(--clr-spd);
+}
+
+#news-article .election-results .gruene {
+    --accent: var(--clr-gruene);
+}
+
+#news-article .election-results .cdu {
+    --accent: var(--clr-cdu);
+}
+
+#news-article .election-results .afd {
+    --accent: var(--clr-afd);
+}
+
+#news-article .election-results .linke {
+    --accent: var(--clr-linke);
+}
+
+#news-article .election-results .fdp {
+    --accent: var(--clr-fdp);
+}
+
+#news-article .election-results .bsw {
+    --accent: var(--clr-bsw);
+}
+
+/* Eigene Liste hervorgehoben — wie die FWG-Zeile der Sitzverteilung in der Markenfarbe */
+
+#news-article .election-results .fwg {
+    --accent: var(--clr-primary);
+    background-color: var(--clr-primary-transparency);
+    border-color: var(--clr-primary);
+    color: var(--clr-primary);
+    font-weight: 700;
+}
+
+#news-article .election-results .party {
+    flex: 0 0 3.6rem;
+}
+
+#news-article .election-results .bar {
+    flex: 1 1 auto;
+    height: .7rem;
+    background-color: var(--clr-surface-2);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+#news-article .election-results .bar::before {
+    content: "";
+    display: block;
+    width: calc(var(--share) * 2.5%);
+    height: 100%;
+    background-color: var(--accent);
+    border-radius: 999px;
+}
+
+#news-article .election-results .share {
+    flex: 0 0 4.4rem;
+    text-align: right;
+    white-space: nowrap;
 }
 
 #news-article .article-quote {
